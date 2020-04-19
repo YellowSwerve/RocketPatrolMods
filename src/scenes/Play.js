@@ -77,20 +77,6 @@ class Play extends Phaser.Scene {
 
         // timer here since it resets each scene should either be 45 or 60
         this.timeLeft = game.settings.gameTimer / 1000;
-        
-        // score display
-        // let scoreConfig = {
-        //     fontFamily: 'Courier' ,
-        //     fontSize: '28px' ,
-        //     backgroundColor: '#F3B141' ,
-        //     color: '#843605' ,
-        //     align: 'right' ,
-        //     padding: {
-        //         top: 5 ,
-        //         botom: 5 ,
-        //     },
-        //     fixedWidth: 100
-        // }
         scoreConfig.fixedWidth = 100;
         
         // sets up how to draw scoreLeft
@@ -115,6 +101,7 @@ class Play extends Phaser.Scene {
         }, null , this);
 
         // 60-second play clock
+        // uses a delayed call which is pretty hard coded instead of using a timer that can be interacted with
         scoreConfig.fixedWidth = 0;
         // this.clock = this.time.delayedCall(game.settings.gameTimer , () => {
         // if(this.timeLeft == 0) {
@@ -125,28 +112,11 @@ class Play extends Phaser.Scene {
         // }, null , this);
 
         // this is where the timer works it works now
+        // addEvent(how often it should be called, callback: the function to call, callbackScope: this, loop: if it should keep happening);
         let countDown = this.time.addEvent({ delay: 1000, callback: decrementTimer, callbackScope: this, loop: true });
-        // while(!this.gameOver) {
-        //     this.clock = this.time.delayedCall(1000 , () => {
-        //         --this.gameTimer;
-        //     })
-        // }
     }
 
     update() {
-        // let scoreConfig = {
-        //     fontFamily: 'Courier' ,
-        //     fontSize: '28px' ,
-        //     backgroundColor: '#F3B141' ,
-        //     color: '#843605' ,
-        //     align: 'right' ,
-        //     padding: {
-        //         top: 5 ,
-        //         botom: 5 ,
-        //     },
-        //     fixedWidth: 0
-        // }
-
         if(this.timeLeft <= 0) {
             this.add.text(game.config.width / 2 , game.config.height / 2 , 'GAME OVER' , scoreConfig).setOrigin(.5);
             this.add.text(game.config.width / 2 , game.config.height / 2 + 64 , '(J)ire to Restart or A for Menu' , scoreConfig).setOrigin(.5);

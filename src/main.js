@@ -17,6 +17,7 @@ let config = {
     // loads the menu and then play
 };
 
+// is put here so it is only called once and isn't required to be defined in multiple places
 let scoreConfig = {
     fontFamily: 'Courier' ,
     fontSize: '28px' ,
