@@ -91,6 +91,7 @@ class Play extends Phaser.Scene {
         //     },
         //     fixedWidth: 100
         // }
+        scoreConfig.fixedWidth = 100;
         
         // sets up how to draw scoreLeft
         this.scoreLeft = this.add.text(69 , 54 , this.p1Score , scoreConfig);
@@ -123,7 +124,7 @@ class Play extends Phaser.Scene {
         // }
         // }, null , this);
 
-        // this is where the timer works LOL IS CRASHES EVERYTHING
+        // this is where the timer works it works now
         let countDown = this.time.addEvent({ delay: 1000, callback: decrementTimer, callbackScope: this, loop: true });
         // while(!this.gameOver) {
         //     this.clock = this.time.delayedCall(1000 , () => {
@@ -133,7 +134,20 @@ class Play extends Phaser.Scene {
     }
 
     update() {
-        if(this.timeLeft == 0) {
+        // let scoreConfig = {
+        //     fontFamily: 'Courier' ,
+        //     fontSize: '28px' ,
+        //     backgroundColor: '#F3B141' ,
+        //     color: '#843605' ,
+        //     align: 'right' ,
+        //     padding: {
+        //         top: 5 ,
+        //         botom: 5 ,
+        //     },
+        //     fixedWidth: 0
+        // }
+
+        if(this.timeLeft <= 0) {
             this.add.text(game.config.width / 2 , game.config.height / 2 , 'GAME OVER' , scoreConfig).setOrigin(.5);
             this.add.text(game.config.width / 2 , game.config.height / 2 + 64 , '(J)ire to Restart or A for Menu' , scoreConfig).setOrigin(.5);
             this.gameOver = true;
