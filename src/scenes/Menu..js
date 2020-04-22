@@ -70,14 +70,14 @@ class Menu extends Phaser.Scene {
             // hard modo
             game.settings = {
                 spaceshipSpeed: 4,
-                gameTimer: 4500
+                gameTimer: 45000
             }
             this.sound.play('sfx_select');
             this.scene.start("playScene"); 
         }
 
         if(Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-            // hard modo
+            // 2 player modo
             game.settings = {
                 spaceshipSpeed: 4,
                 gameTimer: 45000,
